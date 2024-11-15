@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{%block content %}
+<style>
+</style>
+<img src="{{categories.image.url}}" height="300px" width="200%">
+<div><h1 class="text-center mt-3 text-secondary">{{categories.name}}</h1>
+<p><b>{{categories.description}}</b></p></div>
+
+
+<section class="product spad">
+    <div class="container">
+
+        <div class="row property__gallery">
+            {% for i in product %}
+            <div class="col-lg-4 col-md-4 col-sm-6 mix women">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{i.image.url}}">
+                    </div>
+                    <div class="product__item__text">
+                        <h3>{{i.name}}</h3>
+                        <h6>{{i.price}}</h6>
+                          <h6><a href="{% url 'shop:productdetails' i.id %}" class="read-more-btn text-center">Details</a></h6>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
